@@ -3,7 +3,7 @@
     <HeaderComponent />
     <div class="lg:flex content">
       <div :class="(!full) ? 'lg:w-1/2' : 'lg:w-full'">
-        <button class="absolute justify-center items-center w-12 h-12 bg-teal-500 text-white right-0" v-if="!hide" v-on:click="showMap()">
+        <button class="absolute justify-center items-center w-12 h-12 bg-teal-500 text-white right-0" v-if="!hide" v-on:click="toggleMap()">
           <span class="material-icons font-material">
             place
           </span>
@@ -14,7 +14,7 @@
               <div class="flex flex-wrap justify-center">
                 <div v-for="imovel of imoveis" class="card-wrapper">
                   <ImovelCard 
-                    :thumbnail='imovel._source.main_picture'
+                    :pictures='imovel._source.pictures'
                     :price='imovel._source.price'
                     :title='imovel._source.page_breadcrumb[2].title'
                     :property_type='imovel._source.property_type'
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="lg:w-1/2" v-if="show">
-        <button class="absolute justify-center items-center w-12 h-12 bg-teal-500 text-white" id="toggleMap" v-on:click="hideMap()">
+        <button class="absolute justify-center items-center w-12 h-12 bg-teal-500 text-white" id="toggleMap" v-on:click="toggleMap()">
           <span class="material-icons font-material">
             format_list_bulleted
           </span>
@@ -90,15 +90,10 @@ export default {
       });
       return latLng;
     },
-    hideMap() {
-      this.show = false;
-      this.hide = false;
-      this.full = true;
-    },
-    showMap() {
-      this.show = true;
-      this.hide = true;
-      this.full = false;
+    toggleMap() {
+      this.show = !this.show;
+      this.hide = !this.hide;
+      this.full = !this.full;
     }
   }
 }
@@ -157,5 +152,9 @@ export default {
   .right-0 {
     right: 0;
     margin-right: .25rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    
   }
 </style>

@@ -10,9 +10,10 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
     "@nuxtjs/axios": "^5.11.0",
     "google-maps-api-loader": "^1.1.1",
-    "nuxt": "^2.13.0"
+    "nuxt": "^2.13.1"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^2.0.0"

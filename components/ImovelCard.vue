@@ -1,7 +1,11 @@
 <template>
     <div class="card">
         <div class="relative">
-            <img class="w-full" :src='checkThumbnail(thumbnail)' alt="Casafy">
+            <CarouselCard
+                v-if="Array.isArray(checkPictures(pictures))"
+                :pictures='checkPictures(pictures)'
+            />
+            <img class="w-full" :src='checkPictures(pictures)' alt="Casafy" v-else>
         </div>
         <div class="p-3">
             <div class="border-b pb-3">
@@ -32,8 +36,11 @@
 </template>
 
 <script>
+import CarouselCard from '@/components/CarouselCard';
+
 export default {
-    props: ['thumbnail', 'price', 'title', 'property_type', 'page_title', 'full_address', 'surface_area', 'bedrooms'],
+    components: { CarouselCard },
+    props: ['pictures', 'price', 'title', 'property_type', 'page_title', 'full_address', 'surface_area', 'bedrooms'],
     methods: {
         priceFormatter (num) {
             if(num !== null) {
@@ -51,11 +58,11 @@ export default {
         addThreeDots(str) {
             return str.substring(0, 50) + '...';
         },
-        checkThumbnail(url) {
-            if(!url) {
+        checkPictures(arr) {
+            if(arr == null || arr.length == 0) {
                 return '/no_img.jpg';
             }
-            return url;
+            return arr;
         }
     }
 }
@@ -73,12 +80,6 @@ export default {
         background-color: rgba(255,255,255,var(--bg-opacity));
         overflow: hidden;
         cursor: pointer;
-    }
-
-    img {
-        height: 198px;
-        object-fit: cover;
-        object-position: center;        
     }
 
     .valid {
