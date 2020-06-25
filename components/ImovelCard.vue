@@ -4,6 +4,7 @@
             <CarouselCard
                 v-if="Array.isArray(checkPictures(pictures))"
                 :pictures='checkPictures(pictures)'
+                :property_status='property_status'
             />
             <img class="w-full" :src='checkPictures(pictures)' alt="Casafy" v-else>
         </div>
@@ -40,7 +41,7 @@ import CarouselCard from '@/components/CarouselCard';
 
 export default {
     components: { CarouselCard },
-    props: ['pictures', 'price', 'title', 'property_type', 'page_title', 'full_address', 'surface_area', 'bedrooms'],
+    props: ['pictures', 'price', 'title', 'property_type', 'page_title', 'full_address', 'surface_area', 'bedrooms', 'property_status'],
     methods: {
         priceFormatter (num) {
             if(num !== null) {

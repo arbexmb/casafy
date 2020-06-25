@@ -3,34 +3,40 @@
     <HeaderComponent />
     <div class="lg:flex content">
       <div :class="(!full) ? 'lg:w-1/2' : 'lg:w-full'">
-        <button class="absolute justify-center items-center w-12 h-12 bg-teal-500 text-white right-0" v-if="!hide" v-on:click="toggleMap()">
+        <button class="absolute justify-center items-center w-12 h-12 bg-teal-500 text-white right-0 hide-1024" v-if="!hide" v-on:click="toggleMap()">
           <span class="material-icons font-material">
             place
           </span>
         </button>
         <div class="cards bg-white">
-          <div class="pt-6 lg:overflow-y-auto lg:overflow-x-visible map-content">
-            <div>
-              <div class="flex flex-wrap justify-center">
-                <div v-for="imovel of imoveis" class="card-wrapper">
-                  <ImovelCard 
-                    :pictures='imovel._source.pictures'
-                    :price='imovel._source.price'
-                    :title='imovel._source.page_breadcrumb[2].title'
-                    :property_type='imovel._source.property_type'
-                    :page_title='imovel._source.page_title'
-                    :full_address='imovel._source.full_address'
-                    :surface_area='imovel._source.surface_area'
-                    :bedrooms='imovel._source.bedrooms'
-                  />
-                </div>
+          <div class="lg:overflow-y-auto lg:overflow-x-visible map-content">
+            <div class="mb-5 shadow flex items-center">
+              <button class="btn-close-filter flex justify-center items-center">
+                <strong>FILTRAR</strong>
+              </button>
+              <p class="text-sm text-gray-500 pl-4"><strong>{{ total }}</strong> imóveis</p>
+            </div>
+            <div class="flex flex-wrap justify-center">
+              <div v-for="imovel of imoveis" class="card-wrapper">
+                <ImovelCard 
+                  v-if='imovel'
+                  :pictures='imovel._source.pictures'
+                  :price='imovel._source.price'
+                  :title='imovel._source.page_breadcrumb[2].title'
+                  :property_type='imovel._source.property_type'
+                  :page_title='imovel._source.page_title'
+                  :full_address='imovel._source.full_address'
+                  :surface_area='imovel._source.surface_area'
+                  :bedrooms='imovel._source.bedrooms'
+                  :property_status='imovel._source.property_status'
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="lg:w-1/2" v-if="show">
-        <button class="absolute justify-center items-center w-12 h-12 bg-teal-500 text-white" id="toggleMap" v-on:click="toggleMap()">
+        <button class="absolute justify-center items-center w-12 h-12 bg-teal-500 text-white hide-1024" id="toggleMap" v-on:click="toggleMap()">
           <span class="material-icons font-material">
             format_list_bulleted
           </span>
@@ -39,6 +45,7 @@
           :mapConfig='googleMapsConfig()'
           :apiKey='googleMapsApiKey()'
           :locations='googleMapsPins()'
+          class="hide-1024"
         />
       </div>
     </div>
@@ -58,6 +65,7 @@ export default {
   },
   data () {
     return {
+      total: 0,
       imoveis: [],
       show: true,
       hide: true,
@@ -66,6 +74,7 @@ export default {
   },
   async fetch () {
     const response = await this.$axios.$get('https://api.casafy.com/api/v2/search/elasticsearch/find?q=sp+sao-paulo/venda-direta')
+    this.total = response.total
     this.imoveis = response.results
   },
   methods: {
@@ -111,7 +120,7 @@ export default {
   }
 
   .map-content {
-    max-height: 85vh;
+    max-height: 92vh;
   }
 
   .map-content::-webkit-scrollbar {
@@ -142,11 +151,27 @@ export default {
   }
 
   #toggleMap {
-    z-index: 999;
+    z-index: 30;
   }
 
   .font-material {
     font-size: 47px;
+  }
+
+  .btn-close-filter {
+    width: 6rem;
+    height: 3rem;
+    z-index: 30;
+    --bg-opacity: 1;
+    background-color: #fc6360;
+    background-color: rgba(252,99,96,var(--bg-opacity));
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255,255,255,var(--text-opacity));
+  }
+
+  .shadow {
+    box-shadow: 0 1px 1px rgba(0,0,0,.14118);
   }
 
   .right-0 {
@@ -155,6 +180,8 @@ export default {
   }
 
   @media screen and (max-width: 1024px) {
-    
+    .hide-1024 {
+      display: none;
+    }
   }
 </style>

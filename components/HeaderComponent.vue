@@ -22,6 +22,16 @@
                 </div>
             </div>
             <div class="flex justify-between items-center w-2/3 md:w-3/5">
+                <div class="flex justify-end w-5/6 lg:hidden">
+                    <nuxt-link to="/" class="red-border-btn">
+                        Anuncie seu imóvel
+                    </nuxt-link>
+                </div>
+                <div class="block lg:hidden">
+                    <button class="flex items-center pl-2 py-1 text-gray-600">
+                        <span class="material-icons font-menu">menu</span>
+                    </button>
+                </div>
                 <div class="z-0 w-full inset-x-0 opacity-90 lg:block hidden text-gray-600">
                     <nav class="text-base md:text-sm font-normal md:font-semibold">
                         <ul class="lg:flex lg:justify-end items-center">
@@ -112,6 +122,27 @@ export default {
         font-family: Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
         text-transform: uppercase;
         font-weight: 600;
+    }
+
+    .red-border-btn {
+        font-size: .6875rem;
+        color: #fc6360;
+        color: rgba(252,99,96,var(--text-opacity));
+        padding: .25rem .5rem;
+        border-color: #fc6360;
+        border-color: rgba(252,99,96,var(--border-opacity));
+        background-color: transparent;
+        --text-opacity: 1;
+        font-weight: 600;
+        border-width: 1px;
+        --border-opacity: 1;
+        border-radius: .25rem;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+    }
+
+    .font-menu {
+        font-size: 32px;
     }
 
     .max-w-custom {
