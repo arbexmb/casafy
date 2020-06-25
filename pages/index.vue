@@ -16,7 +16,7 @@
               </button>
               <p class="text-sm text-gray-500 pl-4"><strong>{{ total }}</strong> imóveis</p>
             </div>
-            <div class="flex flex-wrap justify-center">
+            <div class="flex flex-wrap justify-center" v-if="imoveis.length > 0">
               <div v-for="imovel of imoveis" class="card-wrapper">
                 <ImovelCard 
                   v-if='imovel'
@@ -32,6 +32,7 @@
                 />
               </div>
             </div>
+            <div class="pl-6" v-else><p>Nenhum imóvel encontrado</p></div>
           </div>
         </div>
       </div>
@@ -79,12 +80,19 @@ export default {
   },
   methods: {
     googleMapsConfig() {
-      const lat = this.imoveis[0]._source.lat;
-      const lng = this.imoveis[0]._source.lng;
+      if(this.imoveis[0]) {
+        const lat = this.imoveis[0]._source.lat;
+        const lng = this.imoveis[0]._source.lng;
+        return {
+          center: { lat, lng },
+          zoom: 10
+        };
+      }
+      
       return {
-        center: { lat, lng },
+        center: { lat: 0, lng: 0 },
         zoom: 10
-      };
+      }
     },
     googleMapsApiKey() {
       return '';
@@ -118,6 +126,7 @@ export default {
   }
 
   .map-content {
+    min-height: 85vh;
     max-height: 92vh;
   }
 

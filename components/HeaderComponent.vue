@@ -13,7 +13,7 @@
                         <div class="flex">
                             <div class="w-full max-w-custom flex flex-wrap relative">
                                 <div class="vue-tags-input flex-shrink flex-grow flex-auto search-bar">
-                                    <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                                    <input type="text" value="SP, São Paulo" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
                                 </div>
                             </div>
                             <button type="submit" class="btn-search">Buscar</button>

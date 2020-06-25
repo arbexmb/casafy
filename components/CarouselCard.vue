@@ -10,7 +10,7 @@
                         </div>
                         <div class="stamp" v-if='property_status && property_status == 2'>
                             <img src="https://image.casafy.com/site/v1.1/silver.svg" class="symbol">
-                            <p class="silver">Mátricula verificada</p>
+                            <p class="silver">Matrícula verificada</p>
                         </div>
                         <div class="stamp" v-if='property_status && property_status == 8'>
                             <img src="https://image.casafy.com/site/v1.1/initial.svg" class="symbol">
