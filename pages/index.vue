@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+  @import url('//fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
   body, h1, h2, h3, h4, h5, h6, p {
     font-family: 'Open Sans', sans-serif;
