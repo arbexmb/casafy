@@ -1,20 +1,39 @@
-# casafy
+# Casafy - Teste front-end
 
-## Build Setup
+This repository contains an application design for the requested project in the CASAFY - TESTE FRONT END, better described [in here](https://github.com/properati-llc/teste_frontend).
+
+## Introduction
+
+The application was developed using Vue.js alongside with Nuxt.js as front-end frameworks, and Tailwind as the css framework.
+
+As requested, casafy's search page was recreated in this application, with a few of its functionalities, such as realty cards as separated components, an embedded google map with pins on it, a button to toggle the map, and more.
+
+**OBS:** Before digging into the code, it is important to emphasise that I am, mainly, a back-end programmer, with experience with Node.js, PHP, and more. Nonetheless, I have been working with front-end my entire career, and thus, I have tried to show my skills with it on this project.
+
+## Setup
+
+It is very simple to setup this project to run it locally. After cloning this repository, you can simply run the following commands to run the application:
 
 ```bash
-# install dependencies
+# to install dependencies:
 $ npm install
 
-# serve with hot reload at localhost:3000
+# to serve the application with hot reload at localhost:3000
 $ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+That is it!
+
+Once you have done that, the application will be running on port 3000, and it will be accessible at: http://localhost:3000/
+
+**OBS:** It is needless to say that it is necessary to have Node.js and npm installed locally. And, of course, port 3000 must be free in order to use it.
+
+## Heroku
+
+To make it easier to see the application on a running state, and also to check its responsiveness, I have also deployed the application on heroku, which it is easily accessible through this url: https://arbexmb-casafy.herokuapp.com/
+
+## Conclusion
+
+I hope I have covered everything that was requested to do, and I also hope that this project is enough to show my skills, considering, as I said on the introduction, that front-end is not my main area of expertise.
+
+However, if anything is missing, I am at your disposal to work even further on the application. 
